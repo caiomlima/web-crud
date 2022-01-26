@@ -11,18 +11,30 @@ namespace Projeto_Web_CRUD.Data {
 
             context.Database.EnsureCreated();
 
-            if (context.Produtos.Any()) {
+            if (context.Vendedores.Any()) {
                 return;
             }
-            var produtos = new Produto[] {
-                new Produto { Nome = "Produto Genérico", Categoria = "Alimentos", Descricao = "Este é um produto genérico de qualidade mediana, como qualquer um outro" },
-                new Produto { Nome = "Produto Sem Nome", Categoria = "Não Identificado", Descricao = "Este é um produto sem nome e de qualidade não identificada" }
-            };
 
+            var vendedores = new Vendedor[] {
+                new Vendedor { Nome = "Ana", ProdutosCadastrados = 3},
+                new Vendedor { Nome = "Roberto", ProdutosCadastrados = 2}
+            };
+            foreach (Vendedor v in vendedores) {
+                context.Vendedores.Add(v);
+            }
+            context.SaveChanges();
+
+
+            var produtos = new Produto[] {
+                new Produto { Nome = "Produto 1", Categoria = "Alimentos", Descricao = "Este é um produto genérico", VendedorId = 1 },
+                new Produto { Nome = "Produto 2", Categoria = "Limpeza", Descricao = "Este é um produto genérico", VendedorId = 1 },
+                new Produto { Nome = "Produto 3", Categoria = "Eletrônicos", Descricao = "Este é um produto genérico", VendedorId = 1 },
+                new Produto { Nome = "Produto 4", Categoria = "Frios", Descricao = "Este é um produto genérico", VendedorId = 2 },
+                new Produto { Nome = "Produto 5", Categoria = "Brinquedos", Descricao = "Este é um produto genérico", VendedorId = 2 }
+            };
             foreach (Produto p in produtos) {
                 context.Produtos.Add(p);
             }
-
             context.SaveChanges();
         }
     }

@@ -11,9 +11,11 @@ namespace Projeto_Web_CRUD.Data {
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options) { }
 
         public DbSet<Produto> Produtos { get; set; } 
+        public DbSet<Vendedor> Vendedores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Produto>().ToTable("produto");
+            modelBuilder.Entity<Vendedor>().ToTable("vendedores");
         }
 
     }

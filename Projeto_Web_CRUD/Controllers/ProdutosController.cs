@@ -19,7 +19,7 @@ namespace Projeto_Web_CRUD.Controllers {
 
         /* -------------------------------------------------- Read - Index -------------------------------------------------- */
         public async Task<IActionResult> Index() {
-            return View(await _context.Produtos.OrderBy(p => p.ProdutoId).ToListAsync());
+            return View(await _context.Produtos.Include(v => v.Vendedor).OrderBy(p => p.ProdutoId).ToListAsync());
         }
 
 
