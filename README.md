@@ -1,0 +1,1 @@
+Projeto Web simples feito para praticar uso do CRUD com EntityFramework e SQLServer Local Database
