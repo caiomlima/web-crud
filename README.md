@@ -1,1 +1,1 @@
-Projeto Web simples feito para praticar uso do CRUD com EntityFramework e SQLServer Local Database
+Projeto Web simples feito para praticar uso do CRUD com relações entre tabelas, EntityFramework, Migrations e SQLServer Local Database

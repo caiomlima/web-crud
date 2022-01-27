@@ -1,0 +1,29 @@
+﻿@model Projeto_Web_CRUD.Models.Vendedor
+
+@{
+    ViewData["Title"] = "Detalhes do Vendedor";
+}
+
+<h1>Details do Vendedor @Html.DisplayFor(model => model.Nome)</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nome do Vendedor
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            Qtd. de Produtos Cadastrados
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProdutosCadastrados)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Update" asp-route-id="@Model.VendedorId">Editar</a> |
+    <a asp-action="Index">Retornar à listagem</a>
+</div>

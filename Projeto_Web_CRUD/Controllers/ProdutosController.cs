@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Projeto_Web_CRUD.Data;
 using Projeto_Web_CRUD.Models;
@@ -17,27 +18,39 @@ namespace Projeto_Web_CRUD.Controllers {
             _context = context;
         }
 
+        private void VendedoresDropDownList(object selectedVendedor = null) {
+            var vendedoresQuery = from v in _context.Vendedores
+                                  orderby v.VendedorId
+                                  select v;
+            ViewBag.VendedorId = new SelectList(vendedoresQuery, "VendedorId", "Nome", selectedVendedor);
+        }
+
+
         /* -------------------------------------------------- Read - Index -------------------------------------------------- */
         public async Task<IActionResult> Index() {
-            return View(await _context.Produtos.Include(v => v.Vendedor).OrderBy(p => p.ProdutoId).ToListAsync());
+            return View(await _context.Produtos.Include(v => v.Vendedor).OrderBy(p => p.ProdutoId).ToListAsync());  
         }
 
 
         /* -------------------------------------------------- Create -------------------------------------------------- */
         public IActionResult Create() {
+            VendedoresDropDownList();
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Nome,Categoria,Descricao")] Produto produto) {
+        public async Task<IActionResult> Create([Bind("Nome, Categoria, Descricao, VendedorId, ProdutosCadastrados")] Produto produto) {
             try {
                 if(ModelState.IsValid) {
+                    var vendedor = new Vendedor();
+                    var produtoContador = vendedor.ProdutosCadastrados += 1;
                     _context.Add(produto);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
             } catch(DbUpdateConcurrencyException) {
-                ModelState.AddModelError("", "Não possível salvar os dados");
+                ModelState.AddModelError("", "Não foi possível salvar os dados");
             }
+            VendedoresDropDownList(produto.VendedorId);
             return View(produto);
         }
 
@@ -47,11 +60,12 @@ namespace Projeto_Web_CRUD.Controllers {
             if(id == null) {
                 return NotFound();
             }
-            var produtos = await _context.Produtos.SingleOrDefaultAsync(p => p.ProdutoId == id);
-            if(produtos == null) {
+            var produto = await _context.Produtos.SingleOrDefaultAsync(p => p.ProdutoId == id);
+            _context.Vendedores.Where(i => produto.VendedorId == i.VendedorId).Load();
+            if(produto == null) {
                 return NotFound();
             }
-            return View(produtos);
+            return View(produto);
         }
 
         /* -------------------------------------------------- Update -------------------------------------------------- */
@@ -60,15 +74,16 @@ namespace Projeto_Web_CRUD.Controllers {
             if (id == null) {
                 return NotFound();
             }
-            var produtos = await _context.Produtos.SingleOrDefaultAsync(p => p.ProdutoId == id);
-            if (produtos == null) {
+            var produto = await _context.Produtos.SingleOrDefaultAsync(p => p.ProdutoId == id);
+            if (produto == null) {
                 return NotFound();
             }
-            return View(produtos);
+            VendedoresDropDownList(produto.VendedorId);
+            return View(produto);
         }
         [HttpPost, ActionName("Update")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateProduct(int id, [Bind("ProdutoId, Nome, Categoria, Descricao")] Produto produto) {
+        public async Task<IActionResult> UpdateProduct(int id, [Bind("ProdutoId, Nome, Categoria, Descricao, VendedorId")] Produto produto) {
             if(id != produto.ProdutoId) {
                 return NotFound();
             }
@@ -81,6 +96,7 @@ namespace Projeto_Web_CRUD.Controllers {
                     ModelState.AddModelError("", "Não foi possível alterar os dados");
                 }
             }
+            VendedoresDropDownList(produto.VendedorId);
             return View(produto);
         }
 

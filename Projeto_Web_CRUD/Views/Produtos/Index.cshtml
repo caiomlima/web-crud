@@ -16,10 +16,10 @@
                 ID do Produto
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                Nome do Produto
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Categoria)
+                Categoria do produto
             </th>
             <th>
                 Vendedor
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Vendedor.Nome)
             </td>
             <td>
-                <a asp-action="Update" asp-route-id="@item.ProdutoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProdutoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProdutoId">Delete</a>
+                <a asp-action="Update" asp-route-id="@item.ProdutoId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ProdutoId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProdutoId">Apagar</a>
             </td>
         </tr>
 }

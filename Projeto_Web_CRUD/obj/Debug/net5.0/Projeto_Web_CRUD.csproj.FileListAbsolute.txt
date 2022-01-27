@@ -440,3 +440,8 @@ D:\# Development\Web\Meus Projetos ASPNET\Projeto_Web_CRUD\Projeto_Web_CRUD\obj\
 D:\# Development\Web\Meus Projetos ASPNET\Projeto_Web_CRUD\Projeto_Web_CRUD\obj\Debug\net5.0\Razor\Views\Produtos\Create.cshtml.g.cs
 D:\# Development\Web\Meus Projetos ASPNET\Projeto_Web_CRUD\Projeto_Web_CRUD\obj\Debug\net5.0\Razor\Views\Produtos\Update.cshtml.g.cs
 D:\# Development\Web\Meus Projetos ASPNET\Projeto_Web_CRUD\Projeto_Web_CRUD\obj\Debug\net5.0\Razor\Views\Produtos\Delete.cshtml.g.cs
+D:\# Development\Web\Meus Projetos ASPNET\Projeto_Web_CRUD\Projeto_Web_CRUD\obj\Debug\net5.0\Razor\Views\Vendedores\Index.cshtml.g.cs
+D:\# Development\Web\Meus Projetos ASPNET\Projeto_Web_CRUD\Projeto_Web_CRUD\obj\Debug\net5.0\Razor\Views\Vendedores\Create.cshtml.g.cs
+D:\# Development\Web\Meus Projetos ASPNET\Projeto_Web_CRUD\Projeto_Web_CRUD\obj\Debug\net5.0\Razor\Views\Vendedores\Details.cshtml.g.cs
+D:\# Development\Web\Meus Projetos ASPNET\Projeto_Web_CRUD\Projeto_Web_CRUD\obj\Debug\net5.0\Razor\Views\Vendedores\Update.cshtml.g.cs
+D:\# Development\Web\Meus Projetos ASPNET\Projeto_Web_CRUD\Projeto_Web_CRUD\obj\Debug\net5.0\Razor\Views\Vendedores\Delete.cshtml.g.cs

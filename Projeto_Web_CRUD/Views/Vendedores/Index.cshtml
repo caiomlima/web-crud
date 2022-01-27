@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Projeto_Web_CRUD.Models.Vendedor>
+
+@{
+    ViewData["Title"] = "Todos os Vendedores";
+}
+
+<h1>Todos os Vendedores</h1>
+
+<p>
+    <a asp-action="Create">Novo Vendedor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID do Vendedor
+            </th>
+            <th>
+                Nome do Vendedor
+            </th>
+            <th>
+                Qtd. de Produtos Cadastrados
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendedorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutosCadastrados)
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.VendedorId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.VendedorId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.VendedorId">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
