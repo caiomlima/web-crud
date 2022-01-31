@@ -16,6 +16,13 @@ namespace Projeto_Web_CRUD.Data {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Produto>().ToTable("produto");
             modelBuilder.Entity<Vendedor>().ToTable("vendedores");
+
+            modelBuilder.Entity<Produto>()
+                .HasOne<Vendedor>(e => e.Vendedor)
+                .WithMany(d => d.Produtos)
+                .HasForeignKey(e => e.VendedorId)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
     }

@@ -18,9 +18,6 @@
             <th>
                 Nome do Vendedor
             </th>
-            <th>
-                Qtd. de Produtos Cadastrados
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -32,9 +29,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProdutosCadastrados)
             </td>
             <td>
                 <a asp-action="Update" asp-route-id="@item.VendedorId">Editar</a> |

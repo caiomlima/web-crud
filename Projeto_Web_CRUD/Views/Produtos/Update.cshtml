@@ -42,7 +42,6 @@
                 @Html.DropDownListFor(x => x.VendedorId, (IEnumerable<SelectListItem>)ViewBag.VendedorId, new { @class = "custom-select" })
                 <span asp-validation-for="VendedorId" class="text-danger"></span>
             </div>
-            @*<input asp-for="Vendedor.ProdutosCadastrados" type="hidden" />*@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

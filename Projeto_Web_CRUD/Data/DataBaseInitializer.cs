@@ -16,8 +16,8 @@ namespace Projeto_Web_CRUD.Data {
             }
 
             var vendedores = new Vendedor[] {
-                new Vendedor { Nome = "Ana", ProdutosCadastrados = 3},
-                new Vendedor { Nome = "Roberto", ProdutosCadastrados = 2}
+                new Vendedor { Nome = "Ana"},
+                new Vendedor { Nome = "Roberto"}
             };
             foreach (Vendedor v in vendedores) {
                 context.Vendedores.Add(v);

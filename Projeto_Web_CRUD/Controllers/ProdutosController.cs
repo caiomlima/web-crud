@@ -27,8 +27,28 @@ namespace Projeto_Web_CRUD.Controllers {
 
 
         /* -------------------------------------------------- Read - Index -------------------------------------------------- */
-        public async Task<IActionResult> Index() {
-            return View(await _context.Produtos.Include(v => v.Vendedor).OrderBy(p => p.ProdutoId).ToListAsync());  
+        public async Task<IActionResult> Index(string sortOrder) {
+            //ViewData["IdSortParam"] = sortOrder;
+            //ViewData["NomeSortParam"] = String.IsNullOrEmpty(sortOrder) ? "nome_desc" : "";
+            //ViewData["CategoriaSortParam"] = String.IsNullOrEmpty(sortOrder) ? "categoria_desc" : "";
+            //ViewData["VendedorSortParam"] = String.IsNullOrEmpty(sortOrder) ? "vendedor_desc" : "";
+            //var produtos = from p in _context.Produtos
+            //               select p;
+            //switch(sortOrder) {
+            //    case "nome_desc":
+            //        produtos = produtos.OrderByDescending(p => p.Nome);
+            //        break;
+            //    case "categoria_desc":
+            //        produtos = produtos.OrderByDescending(p => p.Descricao);
+            //        break;
+            //    case "vendedor_desc":
+            //        produtos = produtos.OrderByDescending(p => p.Vendedor.Nome);
+            //        break;
+            //    default:
+            //        produtos = produtos.OrderBy(p => p.ProdutoId);
+            //        break;
+            //}
+            return View(await _context.Produtos.Include(v => v.Vendedor).ToListAsync());  
         }
 
 
@@ -38,11 +58,9 @@ namespace Projeto_Web_CRUD.Controllers {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Nome, Categoria, Descricao, VendedorId, ProdutosCadastrados")] Produto produto) {
+        public async Task<IActionResult> Create([Bind("Nome, Categoria, Descricao, VendedorId")] Produto produto) {
             try {
                 if(ModelState.IsValid) {
-                    var vendedor = new Vendedor();
-                    var produtoContador = vendedor.ProdutosCadastrados += 1;
                     _context.Add(produto);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));

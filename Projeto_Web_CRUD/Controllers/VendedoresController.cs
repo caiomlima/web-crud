@@ -20,7 +20,7 @@ namespace Projeto_Web_CRUD.Controllers {
 
         /* -------------------------------------------------- Read - Index -------------------------------------------------- */
         public async Task<IActionResult> Index() {
-            return View(await _context.Vendedores.OrderBy(p => p.VendedorId).ToListAsync());
+            return View(await _context.Vendedores.OrderBy(v => v.VendedorId).ToListAsync());
         }
 
 
@@ -29,7 +29,7 @@ namespace Projeto_Web_CRUD.Controllers {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Nome, ProdutosCadastrados")] Vendedor vendedor) {
+        public async Task<IActionResult> Create([Bind("Nome")] Vendedor vendedor) {
             try {
                 if (ModelState.IsValid) {
                     _context.Add(vendedor);
@@ -48,7 +48,7 @@ namespace Projeto_Web_CRUD.Controllers {
             if (id == null) {
                 return NotFound();
             }
-            var vendedor = await _context.Vendedores.SingleOrDefaultAsync(v => v.VendedorId == id);
+            var vendedor = await _context.Vendedores.Include(p => p.Produtos).SingleOrDefaultAsync(v => v.VendedorId == id);
             if (vendedor == null) {
                 return NotFound();
             }
@@ -69,13 +69,12 @@ namespace Projeto_Web_CRUD.Controllers {
         }
         [HttpPost, ActionName("Update")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateProduct(int id, [Bind("VendedorId, Nome, ProdutosCadastrados")] Vendedor vendedor) {
+        public async Task<IActionResult> UpdateProduct(int id, [Bind("VendedorId, Nome")] Vendedor vendedor) {
             if (id != vendedor.VendedorId) {
                 return NotFound();
             }
             if (ModelState.IsValid) {
                 try {
-                    vendedor.ProdutosCadastrados = vendedor.ProdutosCadastrados;
                     _context.Update(vendedor);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
@@ -107,7 +106,7 @@ namespace Projeto_Web_CRUD.Controllers {
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {
-            var vendedor = await _context.Vendedores.FindAsync(id);
+            var vendedor = await _context.Vendedores.Include(e => e.Produtos).SingleAsync(i => i.VendedorId == id);
             if (vendedor == null) {
                 return RedirectToAction(nameof(Index));
             }

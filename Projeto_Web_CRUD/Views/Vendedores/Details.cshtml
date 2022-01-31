@@ -4,26 +4,60 @@
     ViewData["Title"] = "Detalhes do Vendedor";
 }
 
-<h1>Details do Vendedor @Html.DisplayFor(model => model.Nome)</h1>
+<h1>Detalhes do Vendedor @Html.DisplayFor(model => model.Nome)</h1>
 
 <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Nome do Vendedor
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Nome)
         </dd>
-        <dt class = "col-sm-2">
-            Qtd. de Produtos Cadastrados
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProdutosCadastrados)
-        </dd>
     </dl>
+    <br />
+    <h2>Produtos vendidos por @Html.DisplayFor(model => model.Nome)</h2>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID do Produto
+                </th>
+                <th>
+                    Nome do Produto
+                </th>
+                <th>
+                    Categoria do Produto
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Produtos) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdutoId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria)
+                    </td>
+                    <td>
+                        <a asp-controller="Produtos" asp-action="Update" asp-route-id="@item.ProdutoId">Editar</a> |
+                        <a asp-controller="Produtos" asp-action="Details" asp-route-id="@item.ProdutoId">Detalhes</a> |
+                        <a asp-controller="Produtos" asp-action="Delete" asp-route-id="@item.ProdutoId">Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+<br />
 <div>
-    <a asp-action="Update" asp-route-id="@Model.VendedorId">Editar</a> |
+    <a asp-action="Update" asp-route-id="@Model.VendedorId">Editar Vendedor</a> |
     <a asp-action="Index">Retornar à listagem</a>
 </div>

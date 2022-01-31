@@ -13,8 +13,6 @@ namespace Projeto_Web_CRUD.Models {
         [Required]
         public string Nome { get; set; }
 
-        public int ProdutosCadastrados { get; set; }
-
         public ICollection<Produto> Produtos { get; set; }
 
     }
