@@ -15619,6 +15619,16 @@
   "RootNamespace": "Projeto_Web_CRUD",
   "Documents": [
     {
+      "FilePath": "d:\\# Development\\Web\\Meus Projetos ASPNET\\Projeto_Web_CRUD\\Projeto_Web_CRUD\\Views\\Vendedores\\Index.cshtml",
+      "TargetPath": "Views\\Vendedores\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\# Development\\Web\\Meus Projetos ASPNET\\Projeto_Web_CRUD\\Projeto_Web_CRUD\\Views\\Vendedores\\Update.cshtml",
+      "TargetPath": "Views\\Vendedores\\Update.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\# Development\\Web\\Meus Projetos ASPNET\\Projeto_Web_CRUD\\Projeto_Web_CRUD\\Views\\Produtos\\Index.cshtml",
       "TargetPath": "Views\\Produtos\\Index.cshtml",
       "FileKind": "mvc"
@@ -15636,6 +15646,16 @@
     {
       "FilePath": "d:\\# Development\\Web\\Meus Projetos ASPNET\\Projeto_Web_CRUD\\Projeto_Web_CRUD\\Views\\Produtos\\Create.cshtml",
       "TargetPath": "Views\\Produtos\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\# Development\\Web\\Meus Projetos ASPNET\\Projeto_Web_CRUD\\Projeto_Web_CRUD\\Views\\Vendedores\\Details.cshtml",
+      "TargetPath": "Views\\Vendedores\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\# Development\\Web\\Meus Projetos ASPNET\\Projeto_Web_CRUD\\Projeto_Web_CRUD\\Views\\Vendedores\\Delete.cshtml",
+      "TargetPath": "Views\\Vendedores\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15666,6 +15686,11 @@
     {
       "FilePath": "d:\\# Development\\Web\\Meus Projetos ASPNET\\Projeto_Web_CRUD\\Projeto_Web_CRUD\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\# Development\\Web\\Meus Projetos ASPNET\\Projeto_Web_CRUD\\Projeto_Web_CRUD\\Views\\Vendedores\\Create.cshtml",
+      "TargetPath": "Views\\Vendedores\\Create.cshtml",
       "FileKind": "mvc"
     }
   ],
